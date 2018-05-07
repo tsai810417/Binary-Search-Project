@@ -47,14 +47,29 @@ class BinarySearchTree
       self.root = nil
     else
       node = find(value)
-      if node.left.nil? && node.right.nil?
-        if value > node.parent.value
+      if value > node.parent.value
+        if node.left.nil? && node.right.nil?
           node.parent.right = nil
+        elsif node.left.nil?
+          node.parent.right = node.right
         else
-          node.parent.left = nil
+          new_node = left_most(node.right)
+          new_node.parent.left = new_node.right
+          new_node.parent = node.parent
+          node.parent.right = new_node
         end
       else
+        if node.left.nil? && node.right.nil?
+          node.parent.left = nil
+        elsif node.right.nil?
+          node.parent.left = node.left
+        else
+          new_node = right_most(node.left)
+          new_node.parent.right = new_node.left
+          new_node.parent = node.parent
+          node.parent.left = new_node
 
+        end
       end
     end
   end
