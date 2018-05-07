@@ -129,6 +129,9 @@ class BinarySearchTree
   def in_order_traversal(tree_node = @root, arr = [])
   end
 
+  def no_child?(node)
+    node.left.nil? && node.right.nil?
+  end
 
   private
   # optional helper methods go here:
