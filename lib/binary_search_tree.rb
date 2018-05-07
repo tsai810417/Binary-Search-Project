@@ -11,6 +11,11 @@ class BinarySearchTree
   end
 
   def insert(value)
+    if self.root == nil
+      self.root = BSTNode.new(value)
+    else
+      self.root.addChild(value)
+    end
   end
 
   def find(value, tree_node = @root)
