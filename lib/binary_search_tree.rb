@@ -127,6 +127,24 @@ class BinarySearchTree
   end
 
   def in_order_traversal(tree_node = @root, arr = [])
+    if tree_node.parent.nil?
+      arr.push(tree_node.value)
+    elsif tree_node.value < tree_node.parent.value
+      arr.unshift(tree_node.value)
+    else
+      arr.push(tree_node.value)
+    end
+    if no_child?(tree_node)
+    elsif tree_node.left.nil?
+
+      in_order_traversal(tree_node.right, arr)
+    elsif tree_node.right.nil?
+      in_order_traversal(tree_node.left, arr)
+    else
+      arr = arr + (in_order_traversal(tree_node.right))
+      arr = (in_order_traversal(tree_node.left)) + arr
+    end
+    arr
   end
 
   def no_child?(node)
