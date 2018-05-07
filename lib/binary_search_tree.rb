@@ -76,6 +76,13 @@ class BinarySearchTree
 
   # helper method for #delete:
   def maximum(tree_node = @root)
+  def right_most(tree_node = @root)
+    if tree_node.right
+      right_most(tree_node.right)
+    else
+      return tree_node
+    end
+  end
   end
 
   def depth(tree_node = @root)
