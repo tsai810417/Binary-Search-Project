@@ -83,6 +83,13 @@ class BinarySearchTree
       return tree_node
     end
   end
+
+  def left_most(tree_node = @root)
+    if tree_node.left
+      left_most(tree_node.left)
+    else
+      return tree_node
+    end
   end
 
   def depth(tree_node = @root)
