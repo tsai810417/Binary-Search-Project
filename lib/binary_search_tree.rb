@@ -7,6 +7,7 @@ require 'byebug'
 class BinarySearchTree
   attr_accessor :root
   def initialize
+    @root = nil
   end
 
   def insert(value)
